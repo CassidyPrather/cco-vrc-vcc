@@ -7,9 +7,9 @@
         "name":"Cassidy Prather",
         "url":"https://cohost.org/CassidyCo"
     },
-    "description":"Example listing of VRChat packages",
+    "description":"Cassidy's Creator Companion (VCC) Listings",
     "infoLink":{
-        "url":"http://github.com/vrchat-community/template-package-listing",
+        "url":"https://github.com/CassidyPrather/cco-vrc-vcc",
         "text":"View on GitHub"
     },
     "bannerUrl":"banner.png",
