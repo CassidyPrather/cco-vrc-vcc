@@ -1,11 +1,11 @@
 {
     "name":"Example Listing",
     "id":"com.vrchat.example-listing",
-    "url":"https://vrchat-community.github.io/template-package-listing/index.json",
+    "url":"https://CassidyPrather/cco-vrc-vcc/index.json",
     "author":{
-        "email":"developer@vrchat.com",
-        "name":"VRChat",
-        "url":"https://hello.vrchat.com"
+        "email":"pratherea@gmail.com",
+        "name":"Cassidy Prather",
+        "url":"https://cohost.org/CassidyCo"
     },
     "description":"Example listing of VRChat packages",
     "infoLink":{
@@ -14,15 +14,6 @@
     },
     "bannerUrl":"banner.png",
     "githubRepos":[
-        "vrchat-community/clientsim"
-    ],
-    "packages":[
-        {
-            "name":"com.vrchat.udonsharp",
-            "releases":[
-                "https://github.com/vrchat-community/UdonSharp/releases/download/1.1.7/com.vrchat.UdonSharp.zip",
-                "https://github.com/vrchat-community/UdonSharp/releases/download/1.1.6/com.vrchat.UdonSharp-1.1.6.zip"
-            ]
-        }
+        "CassidyPrather/avatar-syringe"
     ]
 }
