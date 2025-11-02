@@ -15,6 +15,7 @@
     "bannerUrl":"banner.png",
     "githubRepos":[
         "CassidyPrather/avatar-syringe",
-        "CassidyPrather/virtual-inebriation-system"
+        "CassidyPrather/virtual-inebriation-system",
+        "CassidyPrather/vrc-adv-tools",
     ]
 }
