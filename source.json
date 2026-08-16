@@ -1,19 +1,9 @@
 {
-    "name":"Example Listing",
-    "id":"com.vrchat.example-listing",
-    "url":"https://CassidyPrather/cco-vrc-vcc/index.json",
-    "author":{
-        "email":"pratherea@gmail.com",
-        "name":"Cassidy Prather",
-        "url":"https://cohost.org/CassidyCo"
+    "name": "Cassidy's VPM Listing",
+    "id": "net.wirenook.vpm",
+    "url": "https://wirenook.net/vpm/listing.json",
+    "author": {
+        "name": "Cassidy Prather"
     },
-    "description":"Cassidy's Creator Companion (VCC) Listings",
-    "infoLink":{
-        "url":"https://github.com/CassidyPrather/cco-vrc-vcc",
-        "text":"View on GitHub"
-    },
-    "bannerUrl":"banner.png",
-    "githubRepos":[
-        "CassidyPrather/vrc-adv-tools",
-    ]
+    "githubRepos": []
 }

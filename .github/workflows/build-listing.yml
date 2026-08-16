@@ -1,28 +1,31 @@
 name: Build Repo Listing
 
-on: 
+on:
   workflow_dispatch:
   push:
     branches: main
-    paths: source.json
+    paths:
+      - source.json
+      - .github/workflows/build-listing.yml
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
-  
+
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
-  
+
 env:
-  listPublishDirectory: Website
+  buildDirectory: build
+  publishDirectory: publish
   pathToCi: ci
 
 jobs:
-  
+
   build-listing:
     name: build-listing
     environment:
@@ -30,14 +33,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      
+
       - uses: actions/checkout@v4 # check out this repo
       - uses: actions/checkout@v4 # check out automation repo
         with:
           repository: vrchat-community/package-list-action
           path: ${{env.pathToCi}}
           clean: false # otherwise the local repo will no longer be checked out
-          
+
       - name: Restore Cache
         uses: actions/cache@v4
         with:
@@ -45,20 +48,37 @@ jobs:
             ${{env.pathToCi}}/.nuke/temp
             ~/.nuget/packages
           key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
-          
+
+      # This listing has no web page, but the automation always renders one from
+      # Website/index.html and Website/app.js. Give it empty templates; the
+      # rendered output stays in the build directory and is never published.
+      - name: Stub out the unused web page templates
+        run: |
+          mkdir -p Website "$buildDirectory"
+          touch Website/index.html Website/app.js
+
+      # No --current-listing-url: the default points at index.json, which we do
+      # not publish, so the fetch 404s and every run rebuilds the listing from
+      # the releases in source.json rather than appending to the previous one.
       - name: Build Package Version Listing
-        run: ${{env.pathToCi}}/build.cmd BuildMultiPackageListing --root ${{env.pathToCi}} --list-publish-directory $GITHUB_WORKSPACE/${{env.listPublishDirectory}}
+        run: ${{env.pathToCi}}/build.cmd BuildMultiPackageListing --root ${{env.pathToCi}} --list-publish-directory $GITHUB_WORKSPACE/${{env.buildDirectory}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
- 
+
+      # Publish the listing alone, under the name it is served as.
+      - name: Collect listing.json
+        run: |
+          mkdir -p "$publishDirectory"
+          mv "$buildDirectory/index.json" "$publishDirectory/listing.json"
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ${{env.listPublishDirectory}}
-          
+          path: ${{env.publishDirectory}}
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

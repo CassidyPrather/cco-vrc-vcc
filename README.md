@@ -1,12 +1,19 @@
-# Cassidy's VRChat Creator Companion Listings
+# Cassidy's VPM Listing
 
-A simple publication routine for all the public VRChat work I do.
+A VRChat Creator Companion listing, published to <https://wirenook.net/vpm/listing.json>.
+
+`source.json` is the whole configuration. Add a repository to `githubRepos` and every
+release zip in it that contains a `package.json` is picked up. Pushing that change to
+`main` rebuilds the listing and deploys it to GitHub Pages; `listing.json` is the only
+file published.
+
+The listing currently ships no packages.
 
 ## Legal
 
 Copyright 2024 Cassidy Prather <pratherea@gmail.com>
 
-Everything in this repository henceforth is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) (See `COPYING`) unless otherwise specified. 
+Everything in this repository henceforth is licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) (See `COPYING`) unless otherwise specified.
 
 ## Credits
 
