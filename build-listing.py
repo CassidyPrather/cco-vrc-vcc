@@ -24,7 +24,12 @@ GITHUB_API = "https://api.github.com"
 
 def fetch(url, token=None):
     """The bytes at url, with a GitHub token attached when one is given."""
-    request = urllib.request.Request(url, headers={"User-Agent": "vpm-listing"})
+    # VRChat's WAF rejects requests whose agent lacks a name, version and
+    # contact, and GitHub requires an agent at all. This satisfies both.
+    request = urllib.request.Request(
+        url,
+        headers={"User-Agent": "vpm-listing/1.0 (+https://github.com/CassidyPrather/vpm)"},
+    )
     if token:
         request.add_header("Authorization", f"Bearer {token}")
     with urllib.request.urlopen(request) as response:
