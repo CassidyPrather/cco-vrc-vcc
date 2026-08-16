@@ -67,7 +67,7 @@ def package_from_zip(url):
 
 
 def version_key(version):
-    """Sort key ordering 1.10.0 after 1.9.0, without a semver dependency.
+    """Sort key ordering 1.10.0 above 1.9.0, without a semver dependency.
 
     Every element is the same shape, so mixed numeric and textual versions stay
     comparable instead of raising.
@@ -99,7 +99,7 @@ def main():
         name: {
             "versions": {
                 version: versions[version]
-                for version in sorted(versions, key=version_key)
+                for version in sorted(versions, key=version_key, reverse=True)
             }
         }
         for name, versions in sorted(packages.items())
