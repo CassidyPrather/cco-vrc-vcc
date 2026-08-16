@@ -1,2 +1,4 @@
-﻿.idea
+.idea
 .vscode
+__pycache__
+publish

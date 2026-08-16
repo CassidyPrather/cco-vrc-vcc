@@ -2,8 +2,6 @@
     "name": "Cassidy's VPM Listing",
     "id": "net.wirenook.vpm",
     "url": "https://wirenook.net/vpm/listing.json",
-    "author": {
-        "name": "Cassidy Prather"
-    },
+    "author": "Cassidy Prather",
     "githubRepos": []
 }
